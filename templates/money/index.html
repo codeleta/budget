@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Main{% endblock %}
+
+{% block content %}
+    <div>
+        <h1>Max spend per day</h1>
+        <p>{{ max_spend }}</p>
+    </div>
+    <div>
+        <h1>Account balance</h1>
+        <ul>
+            {% for name, amount in accounts_balance.items %}
+                <li>{{ name }}: {{ amount }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <h1>Unfilled days</h1>
+        <ul>
+            {% for day in unfilled_days %}
+                <li>{{ day }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <h1>Month plans</h1>
+        <ul>
+            {% for plan in month_plans %}
+                <li>
+                    {{ plan.name }} | {{ plan.date_from }} | {{ plan.date_to }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

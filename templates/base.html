@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Base{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Главная</a></li>
+            <li><a href="{% url 'create_plan' %}">Добавить план</a></li>
+            <li><a href="{% url 'create_money_movement' %}">Добавить чек</a></li>
+            <li><a href="{% url 'create_expense' %}">Добавить трату</a></li>
+            <li><a href="{% url 'statistic' %}">Статистика</a></li>
+            <li><a href="{% url 'plans' %}">Планы</a></li>
+        </ul>
+    </nav>
+    <section>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </section>
+    <section>
+        {% block content %}
+        {% endblock %}
+    </section>
+</body>
+</html>

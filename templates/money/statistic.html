@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Statistic{% endblock %}
+
+{% block content %}
+    <form action="{% url 'statistic' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Send">
+    </form>
+    <h1>Wasted money</h1>
+    <ul>
+        {% for product_type, amount in wasted.items %}
+            <li>{{ product_type }}: {{ amount }}</li>
+        {% endfor %}
+    </ul>
+    <h1>Nonwasted money</h1>
+    <ul>
+        {% for product_type, amount in nonwasted.items %}
+            <li>{{ product_type }}: {{ amount }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

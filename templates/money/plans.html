@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Plans{% endblock %}
+
+{% block content %}
+    <h1>Expired plans</h1>
+    {% include 'money/includes/plans_table.html' with plans=expired_plans %}
+    <h1>Indefinite plans</h1>
+    {% include 'money/includes/plans_table.html' with plans=indefinite_plans %}
+    <h1>Monthly plans</h1>
+    {% include 'money/includes/plans_table.html' with plans=monthly_plans %}
+{% endblock %}
